@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+//apply plugin: 'com.android.library'
+//apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 26
@@ -27,12 +29,14 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     /*rx-android-java*/
     compile 'io.reactivex:rxjava:+'
-    compile 'com.squareup.retrofit:adapter-rxjava:+'
-    compile 'com.trello:rxlifecycle:+'
-    compile 'com.trello:rxlifecycle-components:+'
+    compile 'io.reactivex:rxandroid:1.1.0'
     /*rotrofit*/
     compile 'com.squareup.retrofit2:retrofit:+'
     compile 'com.squareup.retrofit2:converter-gson:+'
     compile 'com.squareup.retrofit2:adapter-rxjava:+'
     compile 'com.google.code.gson:gson:+'
+//    compile 'com.jakewharton:butterknife:(insert latest version)'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:(insert latest version)'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
