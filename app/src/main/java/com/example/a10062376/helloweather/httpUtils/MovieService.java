@@ -5,6 +5,7 @@ import com.example.a10062376.helloweather.MovieEntity;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+import rx.Observable;
 
 /**
  * Created by 10062376 on 2018/1/24.
@@ -12,5 +13,5 @@ import retrofit2.http.Query;
 
 public interface MovieService {
     @GET("top250")
-    Call<MovieEntity> getTopMovie(@Query("start") int start,@Query("count") int count);
+    Observable<MovieEntity> getTopMovie(@Query("start") int start, @Query("count") int count);
 }
