@@ -1,8 +1,7 @@
-package com.example.a10062376.helloweather.httpUtils;
+package com.example.a10062376.helloweather.retrofitpractice.httpUtils;
 
-import com.example.a10062376.helloweather.MovieEntity;
+import com.example.a10062376.helloweather.retrofitpractice.MovieEntity;
 
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;

@@ -1,4 +1,4 @@
-package com.example.a10062376.helloweather;
+package com.example.a10062376.helloweather.retrofitpractice;
 
 import java.util.List;
 
