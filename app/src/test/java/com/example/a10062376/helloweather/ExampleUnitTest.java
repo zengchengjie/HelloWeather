@@ -16,10 +16,19 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
         String strs = CharacterParser.getInstance().getSelling("北京是首都");
-        System.out.println("词组转换为拼音："+strs);
+        System.out.println("词组转换为拼音：" + strs);
 
         String string = CharacterParser.getInstance().convert("南");
-        System.out.println("单字转换为拼音："+string);
+        System.out.println("单字转换为拼音：" + string);
+        new TestUtil().useInterfaceMethod(new MyInterface());
 
+    }
+
+    private class MyInterface implements TestInterface {
+
+        @Override
+        public void testMethod1(String msg) {
+            System.out.print(msg);
+        }
     }
 }

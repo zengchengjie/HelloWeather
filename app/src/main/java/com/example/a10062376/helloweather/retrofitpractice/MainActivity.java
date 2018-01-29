@@ -3,6 +3,7 @@ package com.example.a10062376.helloweather.retrofitpractice;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     //    豆瓣电影 https://api.douban.com/v2/movie/top250?start=0&count=10
     LocationManager locationManager;
     private String TAG = "testWeather";
+    private MyLocationListner listner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +77,13 @@ public class MainActivity extends AppCompatActivity {
 
         locationManager = (LocationManager) this.getSystemService(this.LOCATION_SERVICE);
         List<String> locationList = locationManager.getAllProviders();
+        for (String string1: locationList) {
+            System.out.println(string1);
+        }
+        // 2.2 获取最佳的定位方式
+        Criteria criteria = new Criteria();
+        criteria.setAltitudeRequired(true);  // 设置是否可以定位海拔高度的,如果设置为true 则一定会返回GPS定位
+        listener = new MyLocationListner();
 
 
         LocationProvider locationGpsProvider = locationManager.getProvider(locationManager.GPS_PROVIDER);//通过Gps定位,精确，耗电
@@ -82,29 +91,7 @@ public class MainActivity extends AppCompatActivity {
         if (locationGpsProvider != null || locationNetProvider != null) {
             //判断定位是否存在
 
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime, minDistance, new LocationListener() {
-                @Override
-                public void onLocationChanged(Location location) {
-                    String latitude = location.getLatitude() + "";//纬度
-                    String longitude = location.getLongitude() + "";//经度
-                    showResult.setText("纬度：" + latitude + "\n" + "经度：" + longitude);
-                }
-
-                @Override
-                public void onStatusChanged(String provider, int status, Bundle extras) {
-                    Log.d(TAG, "onStatusChanged: ");
-                }
-
-                @Override
-                public void onProviderEnabled(String provider) {
-                    Log.d(TAG, "onProviderEnabled: ");
-                }
-
-                @Override
-                public void onProviderDisabled(String provider) {
-                    Log.d(TAG, "onProviderDisabled: ");
-                }
-            });
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0,listener);
         } else {
             //无法定位：1、提示用户打开定位服务；2、跳转到设置界面
             Toast.makeText(this, "无法定位，请打开定位服务", Toast.LENGTH_SHORT).show();
@@ -163,5 +150,36 @@ public class MainActivity extends AppCompatActivity {
         };
 
         HttpMethods.getIncetance().getTopMovie(subscriber, 0, 10);
+    }
+
+    private class MyLocationListner implements LocationListener{
+
+        @Override
+        public void onLocationChanged(Location location) {
+            Log.d(TAG, "onLocationChanged: ");
+            String latitude = location.getLatitude() + "";//纬度
+            String longitude = location.getLongitude() + "";//经度
+            showResult.setText("纬度：" + latitude + "\n" + "经度：" + longitude);
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+            Log.d(TAG, "onStatusChanged: ");
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+            Log.d(TAG, "onProviderEnabled: ");
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+            Log.d(TAG, "onProviderDisabled: ");
+        }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        locationManager.removeUpdates(listner);//退出时关闭GPS
     }
 }
