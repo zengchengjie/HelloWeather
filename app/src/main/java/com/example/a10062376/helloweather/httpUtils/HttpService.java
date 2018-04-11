@@ -1,4 +1,4 @@
-package com.example.a10062376.helloweather.retrofitpractice.httpUtils;
+package com.example.a10062376.helloweather.httpUtils;
 
 
 /**

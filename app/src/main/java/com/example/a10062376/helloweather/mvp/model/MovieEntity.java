@@ -1,4 +1,4 @@
-package com.example.a10062376.helloweather.retrofitpractice;
+package com.example.a10062376.helloweather.mvp.model;
 
 import java.util.List;
 

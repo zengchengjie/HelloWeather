@@ -1,6 +1,6 @@
-package com.example.a10062376.helloweather.retrofitpractice.httpUtils;
+package com.example.a10062376.helloweather.httpUtils;
 
-import com.example.a10062376.helloweather.retrofitpractice.MovieEntity;
+import com.example.a10062376.helloweather.mvp.model.MovieEntity;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;

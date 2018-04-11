@@ -1,25 +1,15 @@
-package com.example.a10062376.helloweather.retrofitpractice;
+package com.example.a10062376.helloweather.mvp.view;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
-import android.location.LocationProvider;
-import android.os.Build;
-import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a10062376.helloweather.R;
-import com.example.a10062376.helloweather.retrofitpractice.httpUtils.HttpMethods;
+import com.example.a10062376.helloweather.mvp.model.MovieEntity;
+import com.example.a10062376.helloweather.httpUtils.HttpMethods;
 import com.example.a10062376.helloweather.utils.GetLocation;
 import com.google.gson.Gson;
 

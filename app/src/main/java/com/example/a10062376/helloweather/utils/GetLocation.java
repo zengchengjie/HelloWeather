@@ -19,8 +19,6 @@ import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.a10062376.helloweather.retrofitpractice.MainActivity;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
