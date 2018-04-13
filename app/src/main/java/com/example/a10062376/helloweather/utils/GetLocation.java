@@ -81,7 +81,7 @@ public class GetLocation {
                 activity.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 2);
             }
 
-//            return;
+            return null;
         }
 
         locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
@@ -100,7 +100,12 @@ public class GetLocation {
         if (locationGpsProvider != null || locationNetProvider != null) {
             //判断定位是否存在
             Log.d(TAG, "getGps:1 ");
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, listener);
+//            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, listener);
+            if (locationManager.getAllProviders().contains(LocationManager.NETWORK_PROVIDER))
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, listener);
+
+            if (locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER))
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
             Log.d(TAG, "getGps: 2");
         } else {
             //无法定位：1、提示用户打开定位服务；2、跳转到设置界面

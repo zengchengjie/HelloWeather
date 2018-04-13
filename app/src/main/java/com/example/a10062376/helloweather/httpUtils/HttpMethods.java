@@ -1,6 +1,8 @@
 package com.example.a10062376.helloweather.httpUtils;
 
 import com.example.a10062376.helloweather.mvp.model.MovieEntity;
+import com.example.a10062376.helloweather.mvp.model.WeatherDataEntity;
+import com.example.a10062376.helloweather.utils.Constants;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,7 +32,7 @@ public class HttpMethods {
         retrofit = new Retrofit.Builder().client(httpClient.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(BASE_URL)
+                .baseUrl(Constants.BASE_URL)
                 .build();
         movieService = retrofit.create(MovieService.class);
     }
@@ -46,6 +48,14 @@ public class HttpMethods {
 
     public void getTopMovie(Subscriber<MovieEntity> subscriber, int start, int count) {
         movieService.getTopMovie(start, count)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void getWeatherData(Subscriber<WeatherDataEntity> subscriber, String cityName, String key) {
+        movieService.getWeatherData(cityName, key)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
