@@ -61,5 +61,8 @@ public class HttpMethods {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
+    public void getDisplayUrl(){
+
+    }
 
 }

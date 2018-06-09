@@ -6,7 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.a10062376.helloweather.mvp.view.MainActivity">
 
+    <WebView
+        android:id="@+id/showCardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></WebView>
     <TextView
+        android:visibility="gone"
         android:id="@+id/showResult"
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -21,6 +26,7 @@
         app:layout_constraintVertical_bias="0.18" />
 
     <Button
+        android:visibility="gone"
         android:id="@+id/btnLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,6 +40,7 @@
         tools:layout_editor_absoluteY="459dp" />
 
     <Button
+        android:visibility="gone"
         android:id="@+id/btnNet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -40,5 +40,6 @@ dependencies {
     //compile 'com.jakewharton:butterknife:(insert latest version)'
     //annotationProcessor 'com.jakewharton:butterknife-compiler:(insert latest version)'
     compile 'com.jakewharton:butterknife:8.8.1'
+    compile 'com.mcxiaoke.volley:library:1.0.19'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
